@@ -1,0 +1,832 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sun Mar 15 18:04:06 2026
+# Process ID         : 404934
+# Current directory  : /home/arunupscee/Desktop/xtortion/chacha20/vivado_phase2/poly1305_phase2.runs/synth_1
+# Command line       : vivado -log poly1305_mac.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source poly1305_mac.tcl
+# Log file           : /home/arunupscee/Desktop/xtortion/chacha20/vivado_phase2/poly1305_phase2.runs/synth_1/poly1305_mac.vds
+# Journal file       : /home/arunupscee/Desktop/xtortion/chacha20/vivado_phase2/poly1305_phase2.runs/synth_1/vivado.jou
+# Running On         : arunupscee-HP-EliteDesk-800-G8-Tower-PC
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.3 LTS
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-11700 @ 2.50GHz
+# CPU Frequency      : 4381.581 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16462 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20757 MB
+# Available Virtual  : 7572 MB
+#-----------------------------------------------------------
+source poly1305_mac.tcl -notrace
+Command: synth_design -top poly1305_mac -part xczu7ev-ffvc1156-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 404963
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2030.594 ; gain = 430.508 ; free physical = 177 ; free virtual = 6331
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'poly1305_mac' [/home/arunupscee/Desktop/xtortion/chacha20/src/poly1305_mac.vhd:31]
+INFO: [Synth 8-638] synthesizing module 'poly1305_block' [/home/arunupscee/Desktop/xtortion/chacha20/src/poly1305_block.vhd:28]
+INFO: [Synth 8-638] synthesizing module 'gf_mult_130' [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:25]
+INFO: [Synth 8-638] synthesizing module 'gf_reduce_130' [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_reduce_130.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'gf_reduce_130' (0#1) [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_reduce_130.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'gf_mult_130' (0#1) [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'poly1305_block' (0#1) [/home/arunupscee/Desktop/xtortion/chacha20/src/poly1305_block.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'poly1305_mac' (0#1) [/home/arunupscee/Desktop/xtortion/chacha20/src/poly1305_mac.vhd:31]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2111.562 ; gain = 511.477 ; free physical = 196 ; free virtual = 6308
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2129.375 ; gain = 529.289 ; free physical = 201 ; free virtual = 6303
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu7ev-ffvc1156-2-e
+INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2135.312 ; gain = 535.227 ; free physical = 199 ; free virtual = 6302
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'gf_mult_130'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'poly1305_block'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'poly1305_mac'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                            00001 |                              000
+        partial_products |                            00010 |                              001
+              accumulate |                            00100 |                              010
+            reduce_stage |                            01000 |                              011
+              done_state |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'gf_mult_130'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+               add_block |                              001 |                              001
+               wait_mult |                              010 |                              010
+                 capture |                              011 |                              011
+              done_state |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'poly1305_block'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+                 clamp_r |                              001 |                              001
+           process_block |                              010 |                              011
+            wait_process |                              011 |                              100
+                finalize |                              100 |                              101
+              done_state |                              101 |                              110
+              wait_block |                              110 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'poly1305_mac'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2138.281 ; gain = 538.195 ; free physical = 171 ; free virtual = 6281
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input  134 Bit       Adders := 1     
+	   2 Input  131 Bit       Adders := 2     
+	   2 Input  130 Bit       Adders := 2     
+	   2 Input  128 Bit       Adders := 1     
+	   3 Input   60 Bit       Adders := 1     
+	   4 Input   59 Bit       Adders := 1     
+	   5 Input   58 Bit       Adders := 1     
+	   6 Input   57 Bit       Adders := 1     
+	   5 Input   56 Bit       Adders := 1     
+	   4 Input   55 Bit       Adders := 1     
+	   3 Input   54 Bit       Adders := 1     
+	   2 Input   53 Bit       Adders := 1     
++---Registers : 
+	              260 Bit    Registers := 1     
+	              131 Bit    Registers := 1     
+	              130 Bit    Registers := 5     
+	              128 Bit    Registers := 4     
+	               48 Bit    Registers := 25    
+	               27 Bit    Registers := 25    
+	               26 Bit    Registers := 5     
+	               18 Bit    Registers := 25    
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 7     
++---Multipliers : 
+	              3x130  Multipliers := 1     
++---Muxes : 
+	   2 Input  130 Bit        Muxes := 2     
+	   7 Input  130 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 1     
+	   7 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   5 Input    1 Bit        Muxes := 8     
+	   7 Input    1 Bit        Muxes := 10    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1728 (col length:144)
+BRAMs: 624 (col length: RAMB18 144 RAMB36 72)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[3]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[8]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[13]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[18]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[23]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[3]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[8]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[13]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[18]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[23]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[2]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[7]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[12]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[17]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[22]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[2]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[7]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[12]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[17]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[22]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[1]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[6]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[11]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[16]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[21]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[1]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[6]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[11]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[16]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[21]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[0]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[5]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[10]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[15]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[20]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[0]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[5]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[10]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[15]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[20]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[24]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[19]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[14]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[9]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[4]' and it is trimmed from '48' to '35' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[24]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[19]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[14]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[9]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+WARNING: [Synth 8-3936] Found unconnected internal register 'pp_reg[4]' and it is trimmed from '48' to '17' bits. [/home/arunupscee/Desktop/xtortion/chacha20/src/gf_mult_130.vhd:87]
+DSP Report: Generating DSP pp_reg[0]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[0]0 is absorbed into DSP pp_reg[0]0.
+DSP Report: register pp_reg[0]0 is absorbed into DSP pp_reg[0]0.
+DSP Report: operator pp_reg[0]0 is absorbed into DSP pp_reg[0]0.
+DSP Report: operator pp_reg[0]0 is absorbed into DSP pp_reg[0]0.
+DSP Report: Generating DSP pp_reg[0], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[0] is absorbed into DSP pp_reg[0].
+DSP Report: register pp_reg[0] is absorbed into DSP pp_reg[0].
+DSP Report: operator pp_reg[0]0 is absorbed into DSP pp_reg[0].
+DSP Report: operator pp_reg[0]0 is absorbed into DSP pp_reg[0].
+DSP Report: Generating DSP pp_reg[5]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[5]0 is absorbed into DSP pp_reg[5]0.
+DSP Report: register pp_reg[5]0 is absorbed into DSP pp_reg[5]0.
+DSP Report: operator pp_reg[5]0 is absorbed into DSP pp_reg[5]0.
+DSP Report: operator pp_reg[5]0 is absorbed into DSP pp_reg[5]0.
+DSP Report: Generating DSP pp_reg[5], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[5] is absorbed into DSP pp_reg[5].
+DSP Report: register pp_reg[5] is absorbed into DSP pp_reg[5].
+DSP Report: operator pp_reg[5]0 is absorbed into DSP pp_reg[5].
+DSP Report: operator pp_reg[5]0 is absorbed into DSP pp_reg[5].
+DSP Report: Generating DSP pp_reg[1]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[1]0 is absorbed into DSP pp_reg[1]0.
+DSP Report: register pp_reg[1]0 is absorbed into DSP pp_reg[1]0.
+DSP Report: operator pp_reg[1]0 is absorbed into DSP pp_reg[1]0.
+DSP Report: operator pp_reg[1]0 is absorbed into DSP pp_reg[1]0.
+DSP Report: Generating DSP pp_reg[1], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[1] is absorbed into DSP pp_reg[1].
+DSP Report: register pp_reg[1] is absorbed into DSP pp_reg[1].
+DSP Report: operator pp_reg[1]0 is absorbed into DSP pp_reg[1].
+DSP Report: operator pp_reg[1]0 is absorbed into DSP pp_reg[1].
+DSP Report: Generating DSP pp_reg[6]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[6]0 is absorbed into DSP pp_reg[6]0.
+DSP Report: register pp_reg[6]0 is absorbed into DSP pp_reg[6]0.
+DSP Report: operator pp_reg[6]0 is absorbed into DSP pp_reg[6]0.
+DSP Report: operator pp_reg[6]0 is absorbed into DSP pp_reg[6]0.
+DSP Report: Generating DSP pp_reg[6], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[6] is absorbed into DSP pp_reg[6].
+DSP Report: register pp_reg[6] is absorbed into DSP pp_reg[6].
+DSP Report: operator pp_reg[6]0 is absorbed into DSP pp_reg[6].
+DSP Report: operator pp_reg[6]0 is absorbed into DSP pp_reg[6].
+DSP Report: Generating DSP pp_reg[10]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[10]0 is absorbed into DSP pp_reg[10]0.
+DSP Report: register pp_reg[10]0 is absorbed into DSP pp_reg[10]0.
+DSP Report: operator pp_reg[10]0 is absorbed into DSP pp_reg[10]0.
+DSP Report: operator pp_reg[10]0 is absorbed into DSP pp_reg[10]0.
+DSP Report: Generating DSP pp_reg[10], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[10] is absorbed into DSP pp_reg[10].
+DSP Report: register pp_reg[10] is absorbed into DSP pp_reg[10].
+DSP Report: operator pp_reg[10]0 is absorbed into DSP pp_reg[10].
+DSP Report: operator pp_reg[10]0 is absorbed into DSP pp_reg[10].
+DSP Report: Generating DSP pp_reg[2]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[2]0 is absorbed into DSP pp_reg[2]0.
+DSP Report: register pp_reg[2]0 is absorbed into DSP pp_reg[2]0.
+DSP Report: operator pp_reg[2]0 is absorbed into DSP pp_reg[2]0.
+DSP Report: operator pp_reg[2]0 is absorbed into DSP pp_reg[2]0.
+DSP Report: Generating DSP pp_reg[2], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[2] is absorbed into DSP pp_reg[2].
+DSP Report: register pp_reg[2] is absorbed into DSP pp_reg[2].
+DSP Report: operator pp_reg[2]0 is absorbed into DSP pp_reg[2].
+DSP Report: operator pp_reg[2]0 is absorbed into DSP pp_reg[2].
+DSP Report: Generating DSP pp_reg[7]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[7]0 is absorbed into DSP pp_reg[7]0.
+DSP Report: register pp_reg[7]0 is absorbed into DSP pp_reg[7]0.
+DSP Report: operator pp_reg[7]0 is absorbed into DSP pp_reg[7]0.
+DSP Report: operator pp_reg[7]0 is absorbed into DSP pp_reg[7]0.
+DSP Report: Generating DSP pp_reg[7], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[7] is absorbed into DSP pp_reg[7].
+DSP Report: register pp_reg[7] is absorbed into DSP pp_reg[7].
+DSP Report: operator pp_reg[7]0 is absorbed into DSP pp_reg[7].
+DSP Report: operator pp_reg[7]0 is absorbed into DSP pp_reg[7].
+DSP Report: Generating DSP pp_reg[11]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[11]0 is absorbed into DSP pp_reg[11]0.
+DSP Report: register pp_reg[11]0 is absorbed into DSP pp_reg[11]0.
+DSP Report: operator pp_reg[11]0 is absorbed into DSP pp_reg[11]0.
+DSP Report: operator pp_reg[11]0 is absorbed into DSP pp_reg[11]0.
+DSP Report: Generating DSP pp_reg[11], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[11] is absorbed into DSP pp_reg[11].
+DSP Report: register pp_reg[11] is absorbed into DSP pp_reg[11].
+DSP Report: operator pp_reg[11]0 is absorbed into DSP pp_reg[11].
+DSP Report: operator pp_reg[11]0 is absorbed into DSP pp_reg[11].
+DSP Report: Generating DSP pp_reg[15]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[15]0 is absorbed into DSP pp_reg[15]0.
+DSP Report: register pp_reg[15]0 is absorbed into DSP pp_reg[15]0.
+DSP Report: operator pp_reg[15]0 is absorbed into DSP pp_reg[15]0.
+DSP Report: operator pp_reg[15]0 is absorbed into DSP pp_reg[15]0.
+DSP Report: Generating DSP pp_reg[15], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[15] is absorbed into DSP pp_reg[15].
+DSP Report: register pp_reg[15] is absorbed into DSP pp_reg[15].
+DSP Report: operator pp_reg[15]0 is absorbed into DSP pp_reg[15].
+DSP Report: operator pp_reg[15]0 is absorbed into DSP pp_reg[15].
+DSP Report: Generating DSP pp_reg[3]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[3]0 is absorbed into DSP pp_reg[3]0.
+DSP Report: register pp_reg[3]0 is absorbed into DSP pp_reg[3]0.
+DSP Report: operator pp_reg[3]0 is absorbed into DSP pp_reg[3]0.
+DSP Report: operator pp_reg[3]0 is absorbed into DSP pp_reg[3]0.
+DSP Report: Generating DSP pp_reg[3], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[3] is absorbed into DSP pp_reg[3].
+DSP Report: register pp_reg[3] is absorbed into DSP pp_reg[3].
+DSP Report: operator pp_reg[3]0 is absorbed into DSP pp_reg[3].
+DSP Report: operator pp_reg[3]0 is absorbed into DSP pp_reg[3].
+DSP Report: Generating DSP pp_reg[8]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[8]0 is absorbed into DSP pp_reg[8]0.
+DSP Report: register pp_reg[8]0 is absorbed into DSP pp_reg[8]0.
+DSP Report: operator pp_reg[8]0 is absorbed into DSP pp_reg[8]0.
+DSP Report: operator pp_reg[8]0 is absorbed into DSP pp_reg[8]0.
+DSP Report: Generating DSP pp_reg[8], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[8] is absorbed into DSP pp_reg[8].
+DSP Report: register pp_reg[8] is absorbed into DSP pp_reg[8].
+DSP Report: operator pp_reg[8]0 is absorbed into DSP pp_reg[8].
+DSP Report: operator pp_reg[8]0 is absorbed into DSP pp_reg[8].
+DSP Report: Generating DSP pp_reg[12]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[12]0 is absorbed into DSP pp_reg[12]0.
+DSP Report: register pp_reg[12]0 is absorbed into DSP pp_reg[12]0.
+DSP Report: operator pp_reg[12]0 is absorbed into DSP pp_reg[12]0.
+DSP Report: operator pp_reg[12]0 is absorbed into DSP pp_reg[12]0.
+DSP Report: Generating DSP pp_reg[12], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[12] is absorbed into DSP pp_reg[12].
+DSP Report: register pp_reg[12] is absorbed into DSP pp_reg[12].
+DSP Report: operator pp_reg[12]0 is absorbed into DSP pp_reg[12].
+DSP Report: operator pp_reg[12]0 is absorbed into DSP pp_reg[12].
+DSP Report: Generating DSP pp_reg[16]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[16]0 is absorbed into DSP pp_reg[16]0.
+DSP Report: register pp_reg[16]0 is absorbed into DSP pp_reg[16]0.
+DSP Report: operator pp_reg[16]0 is absorbed into DSP pp_reg[16]0.
+DSP Report: operator pp_reg[16]0 is absorbed into DSP pp_reg[16]0.
+DSP Report: Generating DSP pp_reg[16], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[16] is absorbed into DSP pp_reg[16].
+DSP Report: register pp_reg[16] is absorbed into DSP pp_reg[16].
+DSP Report: operator pp_reg[16]0 is absorbed into DSP pp_reg[16].
+DSP Report: operator pp_reg[16]0 is absorbed into DSP pp_reg[16].
+DSP Report: Generating DSP pp_reg[20]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[20]0 is absorbed into DSP pp_reg[20]0.
+DSP Report: register pp_reg[20]0 is absorbed into DSP pp_reg[20]0.
+DSP Report: operator pp_reg[20]0 is absorbed into DSP pp_reg[20]0.
+DSP Report: operator pp_reg[20]0 is absorbed into DSP pp_reg[20]0.
+DSP Report: Generating DSP pp_reg[20], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[20] is absorbed into DSP pp_reg[20].
+DSP Report: register pp_reg[20] is absorbed into DSP pp_reg[20].
+DSP Report: operator pp_reg[20]0 is absorbed into DSP pp_reg[20].
+DSP Report: operator pp_reg[20]0 is absorbed into DSP pp_reg[20].
+DSP Report: Generating DSP pp_reg[4]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[4]0 is absorbed into DSP pp_reg[4]0.
+DSP Report: register pp_reg[4]0 is absorbed into DSP pp_reg[4]0.
+DSP Report: operator pp_reg[4]0 is absorbed into DSP pp_reg[4]0.
+DSP Report: operator pp_reg[4]0 is absorbed into DSP pp_reg[4]0.
+DSP Report: Generating DSP pp_reg[4], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[4] is absorbed into DSP pp_reg[4].
+DSP Report: register pp_reg[4] is absorbed into DSP pp_reg[4].
+DSP Report: operator pp_reg[4]0 is absorbed into DSP pp_reg[4].
+DSP Report: operator pp_reg[4]0 is absorbed into DSP pp_reg[4].
+DSP Report: Generating DSP pp_reg[13]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[13]0 is absorbed into DSP pp_reg[13]0.
+DSP Report: register pp_reg[13]0 is absorbed into DSP pp_reg[13]0.
+DSP Report: operator pp_reg[13]0 is absorbed into DSP pp_reg[13]0.
+DSP Report: operator pp_reg[13]0 is absorbed into DSP pp_reg[13]0.
+DSP Report: Generating DSP pp_reg[13], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[13] is absorbed into DSP pp_reg[13].
+DSP Report: register pp_reg[13] is absorbed into DSP pp_reg[13].
+DSP Report: operator pp_reg[13]0 is absorbed into DSP pp_reg[13].
+DSP Report: operator pp_reg[13]0 is absorbed into DSP pp_reg[13].
+DSP Report: Generating DSP pp_reg[17]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[17]0 is absorbed into DSP pp_reg[17]0.
+DSP Report: register pp_reg[17]0 is absorbed into DSP pp_reg[17]0.
+DSP Report: operator pp_reg[17]0 is absorbed into DSP pp_reg[17]0.
+DSP Report: operator pp_reg[17]0 is absorbed into DSP pp_reg[17]0.
+DSP Report: Generating DSP pp_reg[17], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[17] is absorbed into DSP pp_reg[17].
+DSP Report: register pp_reg[17] is absorbed into DSP pp_reg[17].
+DSP Report: operator pp_reg[17]0 is absorbed into DSP pp_reg[17].
+DSP Report: operator pp_reg[17]0 is absorbed into DSP pp_reg[17].
+DSP Report: Generating DSP pp_reg[21]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[21]0 is absorbed into DSP pp_reg[21]0.
+DSP Report: register pp_reg[21]0 is absorbed into DSP pp_reg[21]0.
+DSP Report: operator pp_reg[21]0 is absorbed into DSP pp_reg[21]0.
+DSP Report: operator pp_reg[21]0 is absorbed into DSP pp_reg[21]0.
+DSP Report: Generating DSP pp_reg[21], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[21] is absorbed into DSP pp_reg[21].
+DSP Report: register pp_reg[21] is absorbed into DSP pp_reg[21].
+DSP Report: operator pp_reg[21]0 is absorbed into DSP pp_reg[21].
+DSP Report: operator pp_reg[21]0 is absorbed into DSP pp_reg[21].
+DSP Report: Generating DSP pp_reg[9]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[9]0 is absorbed into DSP pp_reg[9]0.
+DSP Report: register pp_reg[9]0 is absorbed into DSP pp_reg[9]0.
+DSP Report: operator pp_reg[9]0 is absorbed into DSP pp_reg[9]0.
+DSP Report: operator pp_reg[9]0 is absorbed into DSP pp_reg[9]0.
+DSP Report: Generating DSP pp_reg[9], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[9] is absorbed into DSP pp_reg[9].
+DSP Report: register pp_reg[9] is absorbed into DSP pp_reg[9].
+DSP Report: operator pp_reg[9]0 is absorbed into DSP pp_reg[9].
+DSP Report: operator pp_reg[9]0 is absorbed into DSP pp_reg[9].
+DSP Report: Generating DSP pp_reg[18]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[18]0 is absorbed into DSP pp_reg[18]0.
+DSP Report: register pp_reg[18]0 is absorbed into DSP pp_reg[18]0.
+DSP Report: operator pp_reg[18]0 is absorbed into DSP pp_reg[18]0.
+DSP Report: operator pp_reg[18]0 is absorbed into DSP pp_reg[18]0.
+DSP Report: Generating DSP pp_reg[18], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[18] is absorbed into DSP pp_reg[18].
+DSP Report: register pp_reg[18] is absorbed into DSP pp_reg[18].
+DSP Report: operator pp_reg[18]0 is absorbed into DSP pp_reg[18].
+DSP Report: operator pp_reg[18]0 is absorbed into DSP pp_reg[18].
+DSP Report: Generating DSP pp_reg[22]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[22]0 is absorbed into DSP pp_reg[22]0.
+DSP Report: register pp_reg[22]0 is absorbed into DSP pp_reg[22]0.
+DSP Report: operator pp_reg[22]0 is absorbed into DSP pp_reg[22]0.
+DSP Report: operator pp_reg[22]0 is absorbed into DSP pp_reg[22]0.
+DSP Report: Generating DSP pp_reg[22], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[22] is absorbed into DSP pp_reg[22].
+DSP Report: register pp_reg[22] is absorbed into DSP pp_reg[22].
+DSP Report: operator pp_reg[22]0 is absorbed into DSP pp_reg[22].
+DSP Report: operator pp_reg[22]0 is absorbed into DSP pp_reg[22].
+DSP Report: Generating DSP pp_reg[14]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[14]0 is absorbed into DSP pp_reg[14]0.
+DSP Report: register pp_reg[14]0 is absorbed into DSP pp_reg[14]0.
+DSP Report: operator pp_reg[14]0 is absorbed into DSP pp_reg[14]0.
+DSP Report: operator pp_reg[14]0 is absorbed into DSP pp_reg[14]0.
+DSP Report: Generating DSP pp_reg[14], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[14] is absorbed into DSP pp_reg[14].
+DSP Report: register pp_reg[14] is absorbed into DSP pp_reg[14].
+DSP Report: operator pp_reg[14]0 is absorbed into DSP pp_reg[14].
+DSP Report: operator pp_reg[14]0 is absorbed into DSP pp_reg[14].
+DSP Report: Generating DSP pp_reg[23]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[23]0 is absorbed into DSP pp_reg[23]0.
+DSP Report: register pp_reg[23]0 is absorbed into DSP pp_reg[23]0.
+DSP Report: operator pp_reg[23]0 is absorbed into DSP pp_reg[23]0.
+DSP Report: operator pp_reg[23]0 is absorbed into DSP pp_reg[23]0.
+DSP Report: Generating DSP pp_reg[23], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[23] is absorbed into DSP pp_reg[23].
+DSP Report: register pp_reg[23] is absorbed into DSP pp_reg[23].
+DSP Report: operator pp_reg[23]0 is absorbed into DSP pp_reg[23].
+DSP Report: operator pp_reg[23]0 is absorbed into DSP pp_reg[23].
+DSP Report: Generating DSP pp_reg[19]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[19]0 is absorbed into DSP pp_reg[19]0.
+DSP Report: register pp_reg[19]0 is absorbed into DSP pp_reg[19]0.
+DSP Report: operator pp_reg[19]0 is absorbed into DSP pp_reg[19]0.
+DSP Report: operator pp_reg[19]0 is absorbed into DSP pp_reg[19]0.
+DSP Report: Generating DSP pp_reg[19], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[19] is absorbed into DSP pp_reg[19].
+DSP Report: register pp_reg[19] is absorbed into DSP pp_reg[19].
+DSP Report: operator pp_reg[19]0 is absorbed into DSP pp_reg[19].
+DSP Report: operator pp_reg[19]0 is absorbed into DSP pp_reg[19].
+DSP Report: Generating DSP pp_reg[24]0, operation Mode is: A2*B2.
+DSP Report: register pp_reg[24]0 is absorbed into DSP pp_reg[24]0.
+DSP Report: register pp_reg[24]0 is absorbed into DSP pp_reg[24]0.
+DSP Report: operator pp_reg[24]0 is absorbed into DSP pp_reg[24]0.
+DSP Report: operator pp_reg[24]0 is absorbed into DSP pp_reg[24]0.
+DSP Report: Generating DSP pp_reg[24], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register pp_reg[24] is absorbed into DSP pp_reg[24].
+DSP Report: register pp_reg[24] is absorbed into DSP pp_reg[24].
+DSP Report: operator pp_reg[24]0 is absorbed into DSP pp_reg[24].
+DSP Report: operator pp_reg[24]0 is absorbed into DSP pp_reg[24].
+WARNING: [Synth 8-7129] Port poly_key[127] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[126] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[125] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[124] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[97] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[96] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[95] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[94] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[93] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[92] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[65] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[64] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[63] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[62] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[61] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[60] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[33] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[32] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[31] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[30] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[29] in module poly1305_mac is either unconnected or has no load
+WARNING: [Synth 8-7129] Port poly_key[28] in module poly1305_mac is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 3078.289 ; gain = 1478.203 ; free physical = 405 ; free virtual = 5733
+---------------------------------------------------------------------------------
+ Sort Area is  pp_reg[0]0_0 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[0]0_0 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[10]0_6 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[10]0_6 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[11]0_a : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[11]0_a : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[12]0_f : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[12]0_f : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[13]0_14 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[13]0_14 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[14]0_15 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[14]0_15 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[15]0_9 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[15]0_9 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[16]0_e : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[16]0_e : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[17]0_13 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[17]0_13 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[18]0_17 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[18]0_17 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[19]0_18 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[19]0_18 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[1]0_3 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[1]0_3 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[20]0_d : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[20]0_d : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[21]0_12 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[21]0_12 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[22]0_16 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[22]0_16 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[23]0_19 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[23]0_19 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[24]0_1a : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[24]0_1a : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[2]0_5 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[2]0_5 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[3]0_8 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[3]0_8 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[4]0_c : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[4]0_c : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[5]0_4 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[5]0_4 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[6]0_7 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[6]0_7 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[7]0_b : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[7]0_b : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[8]0_10 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[8]0_10 : 0 1 : 1842 5545 : Used 1 time 0
+ Sort Area is  pp_reg[9]0_11 : 0 0 : 3703 5545 : Used 1 time 0
+ Sort Area is  pp_reg[9]0_11 : 0 1 : 1842 5545 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping     | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A2*B2           | 27     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17)+A2*B | 27     | 10     | -      | -      | 35     | 1    | 0    | -    | -    | -     | 0    | 1    | 
++------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 3078.289 ; gain = 1478.203 ; free physical = 405 ; free virtual = 5732
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 3078.289 ; gain = 1478.203 ; free physical = 404 ; free virtual = 5731
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 316 ; free virtual = 5677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 316 ; free virtual = 5677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5667
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5666
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5666
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5666
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 20     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 20     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 20     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 20     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 20     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 20     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 26     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 26     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 20     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 20     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
+|gf_mult_130 | A''*B''             | 20     | 17     | -      | -      | 48     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|gf_mult_130 | (PCIN>>17+A''*B'')' | 20     | 9      | -      | -      | 35     | 2    | 2    | -    | -    | -     | 0    | 1    | 
++------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |BUFG            |     1|
+|2     |CARRY8          |   213|
+|3     |DSP_ALU         |    50|
+|4     |DSP_A_B_DATA    |    50|
+|5     |DSP_C_DATA      |    50|
+|6     |DSP_MULTIPLIER  |    50|
+|7     |DSP_M_DATA      |    50|
+|8     |DSP_OUTPUT      |    50|
+|9     |DSP_PREADD      |    50|
+|10    |DSP_PREADD_DATA |    50|
+|11    |LUT1            |     4|
+|12    |LUT2            |   933|
+|13    |LUT3            |   671|
+|14    |LUT4            |   370|
+|15    |LUT5            |   169|
+|16    |LUT6            |   170|
+|17    |FDRE            |  1741|
+|18    |FDSE            |     1|
+|19    |IBUF            |   371|
+|20    |OBUF            |   130|
++------+----------------+------+
+
+Report Instance Areas: 
++------+--------------------+---------------------------------------------+------+
+|      |Instance            |Module                                       |Cells |
++------+--------------------+---------------------------------------------+------+
+|1     |top                 |                                             |  5174|
+|2     |  block_proc        |poly1305_block                               |  3992|
+|3     |    mult_inst       |gf_mult_130                                  |  3070|
+|4     |      \pp_reg[0]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__2   |     8|
+|5     |      \pp_reg[0]    |\block_proc/mult_inst/pp_reg[15]_funnel__3   |     8|
+|6     |      \pp_reg[5]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__21  |     8|
+|7     |      \pp_reg[5]    |\block_proc/mult_inst/pp_reg[15]_funnel__2   |     8|
+|8     |      \pp_reg[1]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__11  |     8|
+|9     |      \pp_reg[1]    |\block_proc/mult_inst/pp_reg[15]_funnel__13  |     8|
+|10    |      \pp_reg[6]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__23  |     8|
+|11    |      \pp_reg[6]    |\block_proc/mult_inst/pp_reg[15]_funnel__12  |     8|
+|12    |      \pp_reg[10]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__22  |     8|
+|13    |      \pp_reg[10]   |\block_proc/mult_inst/pp_reg[15]_funnel__11  |     8|
+|14    |      \pp_reg[2]0   |\block_proc/mult_inst/pp_reg[2]0_funnel      |     8|
+|15    |      \pp_reg[2]    |\block_proc/mult_inst/pp_reg[15]_funnel__8   |     8|
+|16    |      \pp_reg[7]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__15  |     8|
+|17    |      \pp_reg[7]    |\block_proc/mult_inst/pp_reg[15]_funnel__4   |     8|
+|18    |      \pp_reg[11]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__4   |     8|
+|19    |      \pp_reg[11]   |\block_proc/mult_inst/pp_reg[15]_funnel__6   |     8|
+|20    |      \pp_reg[15]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__17  |     8|
+|21    |      \pp_reg[15]   |\block_proc/mult_inst/pp_reg[15]_funnel      |     8|
+|22    |      \pp_reg[3]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__24  |     8|
+|23    |      \pp_reg[3]    |\block_proc/mult_inst/pp_reg[15]_funnel__20  |     8|
+|24    |      \pp_reg[8]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__1   |     8|
+|25    |      \pp_reg[8]    |\block_proc/mult_inst/pp_reg[15]_funnel__15  |     8|
+|26    |      \pp_reg[12]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__18  |     8|
+|27    |      \pp_reg[12]   |\block_proc/mult_inst/pp_reg[15]_funnel__9   |     8|
+|28    |      \pp_reg[16]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__7   |     8|
+|29    |      \pp_reg[16]   |\block_proc/mult_inst/pp_reg[15]_funnel__22  |     8|
+|30    |      \pp_reg[20]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__20  |     8|
+|31    |      \pp_reg[20]   |\block_proc/mult_inst/pp_reg[15]_funnel__19  |     8|
+|32    |      \pp_reg[4]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__6   |     8|
+|33    |      \pp_reg[4]    |\block_proc/mult_inst/pp_reg[15]_funnel__7   |     8|
+|34    |      \pp_reg[13]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__12  |     8|
+|35    |      \pp_reg[13]   |\block_proc/mult_inst/pp_reg[15]_funnel__10  |     8|
+|36    |      \pp_reg[17]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__19  |     8|
+|37    |      \pp_reg[17]   |\block_proc/mult_inst/pp_reg[15]_funnel__17  |     8|
+|38    |      \pp_reg[21]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__14  |     8|
+|39    |      \pp_reg[21]   |\block_proc/mult_inst/pp_reg[15]_funnel__14  |     8|
+|40    |      \pp_reg[9]0   |\block_proc/mult_inst/pp_reg[2]0_funnel__10  |     8|
+|41    |      \pp_reg[9]    |\block_proc/mult_inst/pp_reg[15]_funnel__5   |     8|
+|42    |      \pp_reg[18]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__3   |     8|
+|43    |      \pp_reg[18]   |\block_proc/mult_inst/pp_reg[15]_funnel__16  |     8|
+|44    |      \pp_reg[22]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__8   |     8|
+|45    |      \pp_reg[22]   |\block_proc/mult_inst/pp_reg[15]_funnel__24  |     8|
+|46    |      \pp_reg[14]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__9   |     8|
+|47    |      \pp_reg[14]   |\block_proc/mult_inst/pp_reg[15]_funnel__23  |     8|
+|48    |      \pp_reg[23]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__16  |     8|
+|49    |      \pp_reg[23]   |\block_proc/mult_inst/pp_reg[15]_funnel__18  |     8|
+|50    |      \pp_reg[19]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__5   |     8|
+|51    |      \pp_reg[19]   |\block_proc/mult_inst/pp_reg[15]_funnel__1   |     8|
+|52    |      \pp_reg[24]0  |\block_proc/mult_inst/pp_reg[2]0_funnel__13  |     8|
+|53    |      \pp_reg[24]   |\block_proc/mult_inst/pp_reg[15]_funnel__21  |     8|
++------+--------------------+---------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5666
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 73 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.102 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5666
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 3124.109 ; gain = 1524.016 ; free physical = 305 ; free virtual = 5666
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3153.883 ; gain = 0.000 ; free physical = 443 ; free virtual = 5811
+INFO: [Netlist 29-17] Analyzing 635 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3286.277 ; gain = 0.000 ; free physical = 325 ; free virtual = 5711
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 422 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 50 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 371 instances
+
+Synth Design complete | Checksum: db5f23fc
+INFO: [Common 17-83] Releasing license: Synthesis
+27 Infos, 73 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:19 . Memory (MB): peak = 3286.312 ; gain = 1686.227 ; free physical = 324 ; free virtual = 5711
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2496.752; main = 2477.777; forked = 272.957
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4042.348; main = 3286.281; forked = 964.055
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3310.289 ; gain = 0.000 ; free physical = 324 ; free virtual = 5712
+INFO: [Common 17-1381] The checkpoint '/home/arunupscee/Desktop/xtortion/chacha20/vivado_phase2/poly1305_phase2.runs/synth_1/poly1305_mac.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file poly1305_mac_utilization_synth.rpt -pb poly1305_mac_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 15 18:04:29 2026...

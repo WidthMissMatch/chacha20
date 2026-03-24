@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../src/chacha20_pkg.vhd" \
+"../../../../../src/chacha20_state_init.vhd" \
+"../../../../../src/quarter_round.vhd" \
+"../../../../../src/double_round.vhd" \
+"../../../../../src/round_controller.vhd" \
+"../../../../../src/keystream_xor.vhd" \
+"../../../../../src/chacha20_core.vhd" \
+"../../../../../sim/tb_chacha20_encrypt.vhd" \
+
+# Do not sort compile order
+nosort

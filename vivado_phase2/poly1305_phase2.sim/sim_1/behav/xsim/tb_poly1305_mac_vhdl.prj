@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../src/poly1305_pkg.vhd" \
+"../../../../../src/gf_reduce_130.vhd" \
+"../../../../../src/gf_mult_130.vhd" \
+"../../../../../src/poly1305_block.vhd" \
+"../../../../../src/poly1305_mac.vhd" \
+"../../../../../sim/tb_poly1305_mac.vhd" \
+
+# Do not sort compile order
+nosort

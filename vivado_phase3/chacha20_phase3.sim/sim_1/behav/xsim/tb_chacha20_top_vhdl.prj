@@ -1,0 +1,24 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../src/chacha20_pkg.vhd" \
+"../../../../../src/chacha20_state_init.vhd" \
+"../../../../../src/quarter_round.vhd" \
+"../../../../../src/double_round.vhd" \
+"../../../../../src/round_controller.vhd" \
+"../../../../../src/keystream_xor.vhd" \
+"../../../../../src/chacha20_core.vhd" \
+"../../../../../src/uart_rx.vhd" \
+"../../../../../src/matlab_uart_interface.vhd" \
+"../../../../../src/key_nonce_register.vhd" \
+"../../../../../src/poly1305_pkg.vhd" \
+"../../../../../src/gf_reduce_130.vhd" \
+"../../../../../src/gf_mult_130.vhd" \
+"../../../../../src/poly1305_block.vhd" \
+"../../../../../src/poly1305_mac.vhd" \
+"../../../../../src/output_buffer.vhd" \
+"../../../../../src/uart_tx.vhd" \
+"../../../../../src/chacha20_top.vhd" \
+"../../../../../sim/tb_chacha20_top.vhd" \
+
+# Do not sort compile order
+nosort

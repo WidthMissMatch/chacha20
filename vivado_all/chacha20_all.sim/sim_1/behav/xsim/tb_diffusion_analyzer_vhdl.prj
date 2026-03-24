@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../src/diffusion_analyzer.vhd" \
+"../../../../../sim/tb_diffusion_analyzer.vhd" \
+
+# Do not sort compile order
+nosort

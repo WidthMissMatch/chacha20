@@ -1,0 +1,10 @@
+*.zip
+*.wdb
+*.jou
+*.log
+*.pb
+xsim.dir/
+work/
+work-obj*.cf
+__pycache__/
+*.pyc
